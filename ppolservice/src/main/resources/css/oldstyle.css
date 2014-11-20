@@ -1,0 +1,18 @@
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 400px; 
+    height: 300px
+}
+.gridCellNumberStyle
+{
+	text-align: right
+}
+.lbl
+{
+	padding-right: 5px
+}
+
+.modal-body input.ng-invalid.ng-dirty
+{
+    background-color: #FA787E;
+}

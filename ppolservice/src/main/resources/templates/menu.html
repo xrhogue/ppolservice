@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app="game">
+	<head>
+		<!--
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="css/ng-grid.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		  -->
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/ng-grid.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/dialogs.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	</head>
+	<body ng-controller="GameController as game">
+		<section ng-controller="PanelController as panel">
+			<ul class="nav nav-pills">
+				<li ng-class="{active:panel.isSelected(1)}">
+			 		<a href="" ng-click="panel.selectTab(1)">Attributes</a>
+			 	</li>
+				<li ng-class="{active:panel.isSelected(2)}">
+					<a href="" ng-click="panel.selectTab(2)">Skills</a>
+				</li>
+				<li ng-class="{active:panel.isSelected(3)}">
+					<a href="" ng-click="panel.selectTab(3)">Races</a>
+				</li>
+			</ul>	
+			<div class="panel" ng-show="panel.isSelected(1)">
+				<div ng-controller="StatsController">
+					<script type="text/ng-template" id="statDlg.html">
+    	    			<div class="modal-header">
+        	    			<h3 class="modal-title">Edit Attribute</h3>
+          				</div>
+       					<div class="modal-body" >
+             				<form name="statDlg">
+								<table>
+									<tr><td>Code</td><td><select name="code" data-ng-model="item.code" selected="A" ng-options="availableCode for availableCode in availableCodes"/></td></tr>
+	             					<tr>
+										<td class="lbl">Short Name</td>
+										<td>
+											<input type="text" name="shortForm" data-ng-model="item.shortForm" ng-minlength="3" ng-maxlength="3" required ng-pattern="/[A-Z]{3}/" uppercase tooltip-trigger="mouseenter" tooltip-popup-delay="500" tooltip-placement="right" tooltip="The Short Name consists of 3 uppercase characters">
+											<span class ="error" ng-show="statDlg.shortForm.$error.required">Requires 3 uppercase letters</span>
+											<span class ="error" ng-show="statDlg.shortForm.$error.minlength">Requires 3 uppercase letters</span>
+											<span class ="error" ng-show="statDlg.shortForm.$error.maxlength">Requires 3 uppercase letters</span>
+											<span class ="error" ng-show="statDlg.shortForm.$error.pattern">Requires 3 uppercase letters</span>
+										</td>
+									</tr>
+	             					<tr><td>Long Name</td><td><input type="text" data-ng-model="item.longForm" capitalizetooltip-trigger="mouseenter" tooltip-popup-delay="500" tooltip-placement="right" tooltip="The Long Name is the complete name of the attribute"/></td></tr>
+	             					<tr><td>Multiplier</td><td><input type="number" data-ng-model="item.multiplier" ng-min="1" ng-max="4" check-range ng-required/></td></tr>
+    	         					<tr>
+										<td></td>
+										<td>
+											<button class="primary" data-ng-click="ok()">save</button>
+        	     							<button class="primary" data-ng-click="cancel()">cancel</button>
+										</td>
+									</tr>
+								</table>
+								<tt>statDlg.shortForm.$valid = {{statDlg.shortForm.$valid}}</tt><br>
+  								<tt>statDlg.shortForm.$error = {{statDlg.shortForm.$error}}</tt><br>
+            	 			</form>
+        				</div>
+    				</script>
+					<h1>Attributes</h1>
+					<button ng-click="addNewAttribute()">New Attribute</button>
+					<div ng-grid="gridOptions" class="gridStyle" style="width:600px;height:400px"></div>
+				</div>
+			</div>
+			<div class="panel" ng-show="panel.isSelected(2)">
+				<h1>Skills</h1>
+			</div>
+			<div class="panel" ng-show="panel.isSelected(3)">
+				<h1>Races</h1>
+			</div>
+		</section>
+		<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script> -->
+		<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/angular.js"></script>
+		<script type="text/javascript" src="js/dialogs.min.js"></script>
+		<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+		<script type="text/javascript" src="js/ng-grid.js"></script>
+		<script type="text/javascript" src="js/angular-resource.js"></script>
+		<script type="text/javascript" src="js/ui-bootstrap-tpls-0.11.2.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
+		<script type="text/javascript" src="../js/bootstrap.js"></script>
+		<script type="text/javascript" src="../js/angular.js"></script>
+		<script type="text/javascript" src="../js/ng-grid.js"></script>
+		<script type="text/javascript" src="../js/app.js"></script>
+		<script type="text/javascript" src="../js/ui-bootstrap-tpls-0.11.2.js"></script>
+		<script type="text/javascript" src="../js/dialogs.min.js"></script>
+		<script type="text/javascript" src="../js/angular-resource.js"></script>
+	</body>
+</html>

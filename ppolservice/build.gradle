@@ -1,0 +1,85 @@
+buildscript {
+    repositories {
+        maven { url "http://repo.spring.io/libs-release" }
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.7.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'war'
+
+jar {
+    baseName = 'ppolservice'
+    version =  '0.1.0'
+}
+
+distZip {
+    into(project.name) {
+        from 'src/main/resources'
+        include 'application.properties'
+        include 'keystore'
+    }
+}
+
+distTar {
+    into(project.name) {
+        from 'src/main/resources'
+        include 'application.properties'
+        include 'keystore'
+    }
+}
+
+war {
+    baseName = 'ppolservice'
+    version =  '0.1.0'
+    archiveName = 'ppolservice.war'
+}
+
+task copyWar (dependsOn: war, type: Copy) {
+	from('build/libs') {
+		include '*.war'
+	}
+
+	into 'C:/Program Files/Apache Software Foundation/Tomcat 7.0/webapps'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-release" }
+    maven { url "http://google-api-client-libraries.appspot.com" }
+}
+
+configurations {
+    providedRuntime
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+   	compile("org.springframework.boot:spring-boot-starter-data-jpa:1.1.4.RELEASE")
+   	compile("org.hibernate:hibernate-core:4.3.6.Final")
+   	compile("javax.servlet:javax.servlet-api:3.1.0")
+   	//compile("org.slf4j:slf4j-simple:1.7.7")
+   	compile("org.javassist:javassist:3.15.0-GA")
+   	compile("mysql:mysql-connector-java:5.1.31")
+   	compile("commons-dbcp:commons-dbcp:1.4") 
+    compile("org.springframework:spring-test:4+")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("com.google.http-client:google-http-client:1.13.1-beta")
+    compile("com.google.http-client:google-http-client-jackson:1.13.1-beta")
+    //compile("javax:javaee-web-api:6.0")
+    compile("com.google.apis:google-api-services-oauth2:v2-rev29-1.13.2-beta")
+    testCompile("junit:junit")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}

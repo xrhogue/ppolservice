@@ -1,0 +1,53 @@
+/*********************************************************************************/
+/* Basic                                                                         */
+/*********************************************************************************/
+
+body { width: 100%; height: auto; margin: 0!important; padding: 0; background-color: transparent!important; }
+.hi { background: none; }
+#main { padding: 0!important; float: left }
+#element { margin: 0 auto; width: 100%; height: auto; background: #f6f6f6; }
+#fat-menu { background: #eeeeee; }
+#element div { padding: 0.5em; }
+#element .col-md-6.last { text-align: right; }
+.icon-logo { width: 288px; height: 40px; background: url(../images/logo.png) top center no-repeat; }
+.bottom-section { width: 1687px; height: 335px; margin-left: -110px; background: url(../images/bottom-img.jpg) top center no-repeat; }
+.modal-dialog { margin-top: 200px!important; }
+
+.ui-header.ui-bar-b.ui-header-fixed.slidedown { display: none!important; }
+
+form input[type="text"], form input[type="email"], form input[type="password"], form select, form textarea { width: 100%!important; margin: .5em 0!important; background: #f6f6f6; }
+
+.dropdown-menu, .modal-content { border-radius: 0!important; }
+
+.modal-header { background: #f58000; color: #fff; }
+.modal-header h4 { text-transform: none; }
+
+.btn-warning { background-color: #f58000!important; border-color: #ce6d02!important; }
+.btn-warning:hover, .btn-warning:focus, .btn-warning.focus, .btn-warning:active, .btn-warning.active, .open>.dropdown-toggle.btn-warning { opacity: .75; }
+.grey-btn { background: #494949; color: #F2F2F2; }
+.nav>li>a.grey-btn:hover, .nav>li>a.grey-btn:focus { background: #252525; color: #F38A00; }
+.ppol-orange { color: #F38A00; }
+
+/* Forms */
+
+form label { display: block; margin: 0 0 1em 0; font-family: 'Open Sans Condensed', sans-serif; font-weight: 700; text-transform: uppercase; color: #6b7770; }
+form input[type="text"], form input[type="email"], form input[type="password"], form select, form textarea { -webkit-appearance: none; display: block; border-radius: 3px; border: solid 2px #E7EAE8; }
+form input[type="text"]:focus, form input[type="email"]:focus, form input[type="password"]:focus, form select:focus, form textarea:focus { border-color: #a1cd9b; }
+form input[type="text"], form input[type="email"], form input[type="password"], form select { line-height: 3em; padding: 0 1em; }
+form textarea { height: 10em; padding: 1em; }
+form .formerize-placeholder { color: #555 !important; }
+ form ::-webkit-input-placeholder {
+ color: #555 !important;
+}
+ form :-moz-placeholder {
+ color: #555 !important;
+}
+ form ::-moz-placeholder {
+ color: #555 !important;
+}
+ form :-ms-input-placeholder {
+ color: #555 !important;
+}
+ form ::-moz-focus-inner {
+ border: 0;
+}

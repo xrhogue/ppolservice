@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+  <ModulePrefs title="Gmail Contextual Gadget Test"
+    description="Test of the Gmail Contextual Gadget"
+    height="400"
+    author="Richard Hogue"
+    author_email="richard.hogue@planplusonline.com"
+    author_location="Salt lake City, UT">
+
+    <!-- Declare feature dependencies. -->
+
+    <!-- This one is not specific to Gmail contextual gadgets. -->
+    <!-- Require feature="dynamic-height"/-->
+
+    <!-- The next feature, Caja, is optional, and is supported for
+     use only within test domains. Uncomment the tag only for
+     non-production gadgets. -->
+    <!-- <Require feature="caja"/> -->
+
+    <!-- The next feature, google.contentmatch, is required for all
+     Gmail contextual gadgets.
+     <Param> - specify one or more comma-separated extractor IDs in
+     a param named "extractors". This line is overridden by the extractor ID
+     in the manifest, but is still expected to be present. -->
+    <Require feature="google.contentmatch">
+      <Param name="extractors">
+        google.com:SenderEmailExtractor
+      </Param>
+    </Require>
+
+  </ModulePrefs>
+
+  <!-- Define the content type and display location. The settings
+   "html" and "card" are required for all Gmail contextual gadgets. -->
+  <Content type="html" view="card">
+    <![CDATA[
+    <div id="main-wrapper">
+        <div id="main" class="container">
+            <div id="element" class="row">
+            	<div class="col-md-6">
+            		<div class="icon-logo"></div>
+            	</div>
+            	<div class="col-md-6 last">
+            		<ul class="nav pull-right">
+            			<li id="fat-menu" class="dropdown">
+            				<a href="#" id="drop3" role="button" class="dropdown-toggle grey-btn" data-toggle="dropdown">Create &nbsp;<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+           					<ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                                   <li role="presentation"><a role="menuitem" data-toggle="modal" tabindex="-1" href="#myModal"><span class="glyphicon glyphicon-user ppol-orange" aria-hidden="true"></span>&nbsp; Contact</a></li>
+                                   <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="glyphicon glyphicon-calendar ppol-orange" aria-hidden="true"></span>&nbsp; Appointment</a></li>
+                                   <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="glyphicon glyphicon-ok ppol-orange" aria-hidden="true"></span>&nbsp; Task</a></li>
+                                   <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="glyphicon glyphicon-usd ppol-orange" aria-hidden="true"></span>&nbsp; Opportunity</a></li>
+                                   <!--li role="presentation" class="divider"></li-->
+                                   <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="glyphicon glyphicon-briefcase ppol-orange" aria-hidden="true"></span>&nbsp; Case</a></li>
+           					</ul>
+            			</li>
+            		</ul>
+            	</div>
+            </div>
+        </div>
+    </div>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  		<div class="modal-dialog">
+        	<div class="modal-content">
+          		<div class="modal-header">
+            		<button type="button" class="close" data-dismiss="modal">
+            			<span aria-hidden="true">&times;</span>
+            			<span class="sr-only">Close</span>
+            		</button>
+            		<h4 class="modal-title" id="myModalLabel">
+            			<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            			Create New Contact
+            		</h4>
+          		</div>
+            	<form name="" method="post" action="" onsubmit="">
+          			<div class="modal-body">
+                        <fieldset>
+                        	<div class="row">    
+                        		<div class="col-md-6"><input type="text" name="first-name" id="first-name" value=""  class="input-block-level" placeholder="First Name" /></div>
+                            	<div class="col-md-6"><input type="text" name="last-name" id="last-name" value=""  class="input-block-level" placeholder="Last Name" /></div>
+                        	</div>    
+                        	<input type="text" name="email" id="email" value="@sender_email" class="input-block-level" placeholder="Email"/>
+                        	<input type="text" name="phone" id="phone" value="" class="input-block-level" placeholder="Phone" />
+                        	<textarea rows="11" name="mnote" id="note" class="input-block-level" placeholder="Notes"></textarea>
+		                </fieldset>
+          			</div>
+          			<div class="modal-footer">
+            			<button type="button" class="btn-small btn-default pull-left" data-dismiss="modal">Close</button>
+                    	<button type="submit" value="Add Contact" name="submit" id="submitButton" class="btn-small btn-warning pull-right" onClick="saveContact()">Save Contact</button>
+          			</div>
+                </form> 
+        	</div>
+        </div>
+	</div>
+	<link rel="stylesheet" href="https://54.235.13.236/css/style.css"></link>
+	<link rel="stylesheet" href="https://54.235.13.236/css/style-desktop.css"></link>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="https://54.235.13.236/js/contact.js"></script>		
+	<script>
+		var saveContact = function() {
+			updateContact(document.getElementById('email').value, document.getElementById('first-name').value, document.getElementById('last-name').value);
+		};
+	</script>
+    ]]>
+  </Content>
+</Module>
