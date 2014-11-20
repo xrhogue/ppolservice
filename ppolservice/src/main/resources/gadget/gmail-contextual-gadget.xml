@@ -98,6 +98,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="https://54.235.13.236/js/contact.js"></script>		
 	<script>
+		var getEmailContent = function() {
+			debugger;
+			var matches = google.contentmatch.getContentMatches();
+			var email = matches[0]['sender_email'];
+		};
+		
 		var saveContact = function() {
 			updateContact(document.getElementById('email').value, document.getElementById('first-name').value, document.getElementById('last-name').value);
 		};
